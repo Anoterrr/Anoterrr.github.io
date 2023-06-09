@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
-    <section class="container">
-      <h1>Lista de tarefas</h1>
-      <p>
-        <input type="text" class="input-new-task"name="" id="">
-        <button class="btn-add-task">Add new task</button>
+<html>
+<head>
+    <title>URL API</title>
+    <script>
+        // Retrieve the URL query parameter from the page URL
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
 
-      </p>
-      
-      <ul class="tasks"></ul>
-    </section>
-    <script src="./js/main.js"></script>
-  </body>
+        // Get the URL parameter and display it
+        window.onload = function() {
+            var urlParam = getUrlParameter('url');
+            var urlContainer = document.getElementById('url-container');
+            urlContainer.innerHTML = urlParam;
+        };
+    </script>
+</head>
+<body>
+    <h1>URL API</h1>
+    <p>URL: <span id="url-container"></span></p>
+</body>
 </html>
